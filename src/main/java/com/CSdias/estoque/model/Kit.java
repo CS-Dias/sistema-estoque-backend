@@ -25,6 +25,9 @@ public class Kit {
         setValor(valor);
     }
 
+    public Kit(){
+    }
+
     public Long getId() {
         return this.id;
     }
