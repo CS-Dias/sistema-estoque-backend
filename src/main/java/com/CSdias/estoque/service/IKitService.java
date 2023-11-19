@@ -7,11 +7,15 @@ import com.CSdias.estoque.model.Kit;
 
 public interface IKitService {
 
-    public List<Kit> consultaEstoqueKit();
-    public List<Kit> consultaPorNomeKit();
+    public List<Kit> consultaKit();
 
-    public Optional<Kit> cadastrar(Kit kit);
-    public Optional<Kit> consultarPorId(String id);
-    public Optional<Kit> atualizar(Long id, Kit kit);
-    public void excluir(Long id);
+    public List<Kit> consultaPorNome(String nome);
+
+    public Optional<Kit> consultaPorId(Long id);
+
+    public Optional<Kit> cadastrarKit(Kit kit);
+
+    public Optional<Kit> atualizarKit(Kit kit);
+
+    public void excluirKit(Long id);
 }

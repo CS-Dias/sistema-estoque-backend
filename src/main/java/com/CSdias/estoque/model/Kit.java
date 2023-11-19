@@ -2,30 +2,34 @@ package com.CSdias.estoque.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler"}) //Impede erros no Json durante carregamentos lentos
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" }) // Impede erros no Json durante carregamentos lentos
 @Entity
 
 public class Kit {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Long id;
+
+    @Column(unique = true)
     private String nome;
+
     private String descricao;
+
     private double valor;
 
-    public Kit(String nome, String descricao, double valor){
-        setNome(nome);
-        setDescricao(descricao);
-        setValor(valor);
+    public Kit(String nome, String descricao, double valor) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.valor = valor;
     }
 
-    public Kit(){
+    public Kit() {
     }
 
     public Long getId() {
@@ -42,9 +46,9 @@ public class Kit {
 
     public void setNome(String nome) {
         if (nome == null || nome.isBlank()) {
-            throw new IllegalArgumentException("O nome não pode ficar em branco");
+            throw new IllegalArgumentException("X - O nome não pode ficar em branco");
         } else {
-             this.nome = nome;
+            this.nome = nome;
         }
     }
 
@@ -53,10 +57,10 @@ public class Kit {
     }
 
     public void setDescricao(String descricao) {
-        if (nome == null || nome.isBlank()) {
-            throw new IllegalArgumentException("A descrição não pode ficar em branco");
+        if (descricao == null || descricao.isBlank()) {
+            throw new IllegalArgumentException("X - A descrição não pode ficar em branco");
         } else {
-             this.descricao = descricao;
+            this.descricao = descricao;
         }
     }
 
@@ -65,10 +69,14 @@ public class Kit {
     }
 
     public void setValor(double valor) {
-        if (nome == null || nome.isBlank()) {
-            throw new IllegalArgumentException("A descrição não pode ficar em branco");
-        } else {
-             this.valor = valor;
+        try{
+            if (valor <= 0) {
+                throw new IllegalArgumentException("X - O valor deve ser maior que zero");
+            } else {
+                this.valor = valor;
+            }
+        } catch (Exception e) { 
+            throw new IllegalArgumentException("X - O valor deve ser maior que zero");
         }
     }
 }
