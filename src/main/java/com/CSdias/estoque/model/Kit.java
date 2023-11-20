@@ -16,14 +16,16 @@ public class Kit {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(unique = true)
+    private Peca peca;
+
     private String nome;
 
     private String descricao;
 
     private double valor;
 
-    public Kit(String nome, String descricao, double valor) {
+    public Kit(Peca peca, String nome, String descricao, double valor) {
+        this.peca = peca;
         this.nome = nome;
         this.descricao = descricao;
         this.valor = valor;
@@ -31,6 +33,16 @@ public class Kit {
 
     public Kit() {
     }
+
+
+    public Peca getPeca() {
+        return this.peca;
+    }
+
+    public void setPeca(Peca peca) {
+        this.peca = peca;
+    }
+
 
     public Long getId() {
         return this.id;

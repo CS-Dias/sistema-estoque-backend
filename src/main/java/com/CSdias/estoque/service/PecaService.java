@@ -15,6 +15,30 @@ import com.CSdias.estoque.model.Peca;
 
 @Service
 public class PecaService implements IPecaService {
+
+    public Logger getLogger() {
+        return this.logger;
+    }
+
+    public void setLogger(Logger logger) {
+        this.logger = logger;
+    }
+
+    public IPecaRepository getPecaRepository() {
+        return this.pecaRepository;
+    }
+
+    public void setPecaRepository(IPecaRepository pecaRepository) {
+        this.pecaRepository = pecaRepository;
+    }
+
+    public IKitRepository getKitRepository() {
+        return this.kitRepository;
+    }
+
+    public void setKitRepository(IKitRepository kitRepository) {
+        this.kitRepository = kitRepository;
+    }
     Logger logger = LogManager.getLogger(getClass());
 
     @Autowired
@@ -24,10 +48,19 @@ public class PecaService implements IPecaService {
     IKitRepository kitRepository;
 
     @Override
-    public List<Peca> consultaPorKit(Optional<Kit> kit){
-        logger.info(">>> Serviço 'Peca' consultaPorKit inciciado");
+    public List<Peca> consultaPeca() {
+        logger.info(">>> Serviço consulta 'Peca' iniciado");
 
-        List<Peca> peca = pecaRepository.findByKit(kit);
+        List<Peca> peca = pecaRepository.findAll();
+
+        return peca;
+    }
+
+    @Override
+    public List<Peca> consultaPorNome(String nome) {
+        logger.info(">>> Serviço 'Peca' consultaPorNome");
+
+        List<Peca> peca = pecaRepository.findByNomeIgnoringCaseContaining(nome);
 
         return peca;
     }
@@ -51,7 +84,6 @@ public class PecaService implements IPecaService {
         logger.info(">>> Serviço 'Peca' atualizarPeca iniciado");
 
         return pecaRepository.findById(newPeca.getId()).map(peca -> {
-            peca.setKit(newPeca.getKit());
             peca.setNome(newPeca.getNome());
             peca.setCor(newPeca.getCor());
             peca.setDescricao(newPeca.getDescricao());
@@ -69,4 +101,5 @@ public class PecaService implements IPecaService {
 
         pecaRepository.deleteById(id);
     }
+
 }

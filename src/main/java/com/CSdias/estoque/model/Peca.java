@@ -28,8 +28,7 @@ public class Peca {
 
     }
 
-    public Peca (Kit kit, String nome, String tipo, String cor, String descricao, int quantidade, int quantidadeMin) {
-        this.kit = kit;
+    public Peca (String nome, String tipo, String cor, String descricao, int quantidade, int quantidadeMin) {
         this.nome = nome;
         this.tipo = tipo;
         this.cor = cor;
@@ -44,14 +43,6 @@ public class Peca {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Kit getKit() {
-        return this.kit;
-    }
-
-    public void setKit(Kit kit) {
-        this.kit = kit;
     }
 
     public String getNome() {

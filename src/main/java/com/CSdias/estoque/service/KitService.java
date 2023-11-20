@@ -10,12 +10,23 @@ import org.springframework.stereotype.Service;
 
 import com.CSdias.estoque.model.IKitRepository;
 import com.CSdias.estoque.model.Kit;
+import com.CSdias.estoque.model.Peca;
 
 @Service
 public class KitService implements IKitService {
     Logger logger = LogManager.getLogger(this.getClass());
+    
     @Autowired
     IKitRepository kitRepository;
+
+    @Override
+    public List<Kit> consultaPorPeca(Optional<Peca> peca) {
+        logger.info(">>> Serviço 'Kit' consultaPorPeca iniciado");
+
+        List<Kit> kit = kitRepository.findByPeca(peca);
+
+        return kit;
+    }
 
     @Override
     public List<Kit> consultaKit() {

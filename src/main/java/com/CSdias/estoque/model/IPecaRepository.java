@@ -6,6 +6,6 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IPecaRepository extends JpaRepository<Peca, Long> {
-    public List<Peca> findByKit(Optional<Kit> kit);
-
+    public Optional<Peca> findById(Long id);
+    public List<Peca> findByNomeIgnoringCaseContaining(String nome);
 }

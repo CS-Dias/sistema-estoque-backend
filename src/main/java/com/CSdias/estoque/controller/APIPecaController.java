@@ -33,6 +33,7 @@ import jakarta.transaction.Transactional;
 
 @RestController
 @RequestMapping("api/v1")
+
 public class APIPecaController {
     Logger logger = LogManager.getLogger(getClass());
 
@@ -43,41 +44,66 @@ public class APIPecaController {
     IKitService kitService;
 
     @CrossOrigin
-    @GetMapping(value = "pecas", params = "id")
+    @GetMapping("peca")
     @Transactional
-    public ResponseEntity<Object> consultaPeca(@RequestParam(value = "id") Long id) {
-        logger.info("apicontroller consulta peca");
+    public ResponseEntity<Object> consultaPeca() {
+        logger.info(">>> ApiController consulta Peca");
 
-        Optional<Kit> kit = kitService.consultaPorId(id);
-
-        List<Peca> peca = pecaService.consultaPorKit(kit);
-
-        return ResponseEntity.status(HttpStatus.OK).body(peca);
+        return ResponseEntity.status(HttpStatus.OK).body(pecaService.consultaPeca());
     }
 
-    public ResponseEntity<Object> consultaPecaPorKit(@RequestParam(value = "id_kit") Long id_kit) {
-        logger.info("apicontroller consulta peca por Kit");
+    // public ResponseEntity<Object> consultaPecaPorKit(@RequestParam(value =
+    // "id_kit") Long id_kit) {
+    // logger.info("apicontroller consulta peca por Kit");
 
-        Optional<Kit> kit = kitService.consultaPorId(id_kit);
+    // Optional<Kit> kit = kitService.consultaPorId(id_kit);
 
-        return ResponseEntity.status(HttpStatus.OK).body(pecaService.consultaPorKit(kit));
+    // return
+    // ResponseEntity.status(HttpStatus.OK).body(pecaService.consultaPorKit(kit));
+    // }
+
+    @CrossOrigin
+    @GetMapping(value = "peca", params = "id")
+    @Transactional
+    public ResponseEntity<Object> consultaPorId(@RequestParam(value = "id") Long id){
+        logger.info(">>> ApiController consulta Peca por ID");
+
+        return ResponseEntity.status(HttpStatus.OK).body(pecaService.consultaPorId(id));
     }
 
     @CrossOrigin
-    @PostMapping(value = "peca")
+    @GetMapping(value = "peca", params = "nome")
     @Transactional
-    public ResponseEntity<Object> cadastrarPeca(@RequestParam(value = "kit_id") Long kit_id,
-            @RequestBody Peca peca) {
-        logger.info("apicontroller cadastrar peca");
+    public ResponseEntity<Object> consultaPorNome(@RequestParam(value = "nome") String nome){
+        logger.info(">>> ApiController consulta peca por ID");
 
-        Optional<Kit> kit = kitService.consultaPorId(kit_id);
-
-        peca.setKit(kit.get());
-
-        Optional<Peca> newPeca = pecaService.cadastrarPeca(peca);
-
-        return ResponseEntity.status(HttpStatus.OK).body(newPeca);
+        return ResponseEntity.status(HttpStatus.OK).body(pecaService.consultaPorNome(nome));
     }
+
+    @CrossOrigin
+    @PostMapping("peca")
+    @Transactional
+    public ResponseEntity<Object> cadastrarPeca(@RequestBody Peca peca){
+        logger.info(">>> ApiController CadastraPeca");
+
+        return ResponseEntity.status(HttpStatus.OK).body(pecaService.cadastrarPeca(peca));
+    }
+
+    // @CrossOrigin
+    // @PostMapping(value = "peca")
+    // @Transactional
+    // public ResponseEntity<Object> cadastrarPeca(@RequestParam(value = "kit_id") Long kit_id,
+    //         @RequestBody Peca peca) {
+    //     logger.info("apicontroller cadastrar peca");
+
+    //     Optional<Kit> kit = kitService.consultaPorId(kit_id);
+
+    //     peca.setKit(kit.get());
+
+    //     Optional<Peca> newPeca = pecaService.cadastrarPeca(peca);
+
+    //     return ResponseEntity.status(HttpStatus.OK).body(newPeca);
+    // }
 
     @CrossOrigin
     @PatchMapping("peca")

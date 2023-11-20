@@ -4,12 +4,15 @@ import java.util.List;
 import java.util.Optional;
 
 import com.CSdias.estoque.model.Kit;
+import com.CSdias.estoque.model.Peca;
 
 public interface IKitService {
 
     public List<Kit> consultaKit();
 
     public List<Kit> consultaPorNome(String nome);
+
+    public List<Kit> consultaPorPeca(Optional<Peca> peca);
 
     public Optional<Kit> consultaPorId(Long id);
 

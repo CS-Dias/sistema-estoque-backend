@@ -7,9 +7,12 @@ import com.CSdias.estoque.model.Kit;
 import com.CSdias.estoque.model.Peca;
 
 public interface IPecaService {
-    public Optional<Peca> consultaPorId(Long id);
+    
+    public List<Peca> consultaPeca();
 
-    public List<Peca> consultaPorKit(Optional<Kit> kit);
+    public List<Peca> consultaPorNome(String nome);
+
+    public Optional<Peca> consultaPorId(Long id);
 
     public Optional<Peca> cadastrarPeca(Peca peca);
 
