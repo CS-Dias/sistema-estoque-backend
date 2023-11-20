@@ -8,7 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -58,7 +60,7 @@ public class APIKitController {
     }
 
     @CrossOrigin
-    @GetMapping("kit")
+    @PostMapping("kit")
     @Transactional
     public ResponseEntity<Object> cadastrarKit(@RequestBody Kit kit){
         logger.info(">>> ApiController consulta Kit por ID");
@@ -67,7 +69,7 @@ public class APIKitController {
     }
 
     @CrossOrigin
-    @GetMapping("kit")
+    @PatchMapping("kit")
     @Transactional
     public ResponseEntity<Object> atualizarKit(@RequestBody Kit kit){
         logger.info(">>> ApiController atualizar Kit");
