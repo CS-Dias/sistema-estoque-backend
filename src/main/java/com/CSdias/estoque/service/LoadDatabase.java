@@ -26,7 +26,7 @@ public class LoadDatabase {
 
             pecaRepository.saveAll(Arrays.asList(peca1, peca2, peca3));
 
-            Kit kit = new Kit(1, "Kit basico", "Kit basico pra cadeira simples", 60.50);
+            Kit kit = new Kit(peca1, "Kit basico", "Kit basico pra cadeira simples", 60.50);
 
             kitRepository.saveAll(Arrays.asList(kit));
             logger.info(">>> LoadDatabase -> Cadastro de 3 Kits realizado");
