@@ -2,6 +2,7 @@ package com.CSdias.estoque.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,6 +13,7 @@ import com.CSdias.estoque.model.IKitRepository;
 import com.CSdias.estoque.model.IPecaRepository;
 import com.CSdias.estoque.model.Kit;
 import com.CSdias.estoque.model.Peca;
+import com.CSdias.estoque.model.Produto;
 
 @Service
 public class PecaService implements IPecaService {
@@ -100,6 +102,15 @@ public class PecaService implements IPecaService {
         logger.info("Serviço 'Peca' excluirPeca");
 
         pecaRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Peca> consultaByProduto(Set<Produto> produto) {
+        logger.info(">>> Serviço 'Produto' consultaPorPedido inciado");
+
+        List<Peca> peca = pecaRepository.findByProduto(produto);
+
+        return peca;
     }
 
 }

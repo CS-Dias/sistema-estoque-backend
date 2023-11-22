@@ -118,7 +118,7 @@ public class APIKitController {
     @DeleteMapping("kit/{id}")
     @Transactional
     public ResponseEntity<Object> excluirKit(@PathVariable Long id, HttpServletRequest req) {
-        logger.info("apicontroller excluir professor");
+        logger.info("apicontroller excluir kit");
 
 
         kitService.excluirKit(id);

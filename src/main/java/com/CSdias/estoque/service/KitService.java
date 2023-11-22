@@ -48,7 +48,7 @@ public class KitService implements IKitService {
 
     @Override
     public Optional<Kit> consultaPorId(Long id) {
-        logger.info(">>> Serviço 'Professor' consultaPorId iniciado");
+        logger.info(">>> Serviço 'Kit' consultaPorId iniciado");
 
         Optional<Kit> kit = kitRepository.findById(id);
 

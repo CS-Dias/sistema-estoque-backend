@@ -1,6 +1,7 @@
 package com.CSdias.estoque.service;
 
 import java.util.Arrays;
+import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,6 +13,8 @@ import com.CSdias.estoque.model.IKitRepository;
 import com.CSdias.estoque.model.IPecaRepository;
 import com.CSdias.estoque.model.Kit;
 import com.CSdias.estoque.model.Peca;
+import com.CSdias.estoque.model.Pedido;
+import com.CSdias.estoque.model.Produto;
 
 @Configuration
 public class LoadDatabase {
@@ -29,6 +32,11 @@ public class LoadDatabase {
             Kit kit = new Kit(peca1, "Kit basico", "Kit basico pra cadeira simples", 60.50);
 
             kitRepository.saveAll(Arrays.asList(kit));
+
+            Produto produto1 = new Produto("Cadeira Simples Azul", "Cadeira simples azul para escritório", "Escritório", "azul", 120.50, (Set<Peca>) peca1);
+
+            Pedido pedido1 = new Pedido("Fulano Beltrano", "sla bixo", "22/11/2023", 5000, (Set<Produto>) produto1);
+
             logger.info(">>> LoadDatabase -> Cadastro de 3 Kits realizado");
         };
     }
