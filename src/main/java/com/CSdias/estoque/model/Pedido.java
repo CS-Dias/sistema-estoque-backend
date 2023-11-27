@@ -25,24 +25,15 @@ public class Pedido {
 
     private double valor;
 
-    @ManyToMany
-    @JoinTable(
-        name = "pedidoProduto",
-        joinColumns = @JoinColumn( name = "pedido_id"),
-        inverseJoinColumns = @JoinColumn( name = "produto_id")
-    )
-    Set<Produto> pedidoProduto;
-
-
     public Pedido() {
     }
 
-    public Pedido(String cliente, String descricao, String dataPedido, double valor, Set<Produto> pedidoProduto) {
+    public Pedido(String cliente, String descricao, String dataPedido, double valor) {
         this.cliente = cliente;
         this.descricao = descricao;
         this.dataPedido = dataPedido;
         this.valor = valor;
-        this.pedidoProduto = pedidoProduto;
+        // this.pedidoProduto = pedidoProduto;
     }
 
     public Long getId() {
@@ -75,14 +66,6 @@ public class Pedido {
 
     public void setDataPedido(String dataPedido) {
         this.dataPedido = dataPedido;
-    }
-
-    public Set<Produto> getPedidoProduto() {
-        return this.pedidoProduto;
-    }
-
-    public void setPedidoProduto(Set<Produto> pedidoProduto) {
-        this.pedidoProduto = pedidoProduto;
     }
 
     public double getValor() {

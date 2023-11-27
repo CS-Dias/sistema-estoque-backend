@@ -15,7 +15,7 @@ public interface IPedidoRepository extends JpaRepository <Pedido, Long>{
 
     public Optional<Pedido> findById(Long id);
 
-    public List<Pedido> findByProduto(Set<Produto> produto);
+    // public List<Pedido> findByProduto(Set<Produto> produto);
 
-    public List<Pedido> findByDate(Date data);
+    // public List<Pedido> findByDate(Date data);
 }

@@ -27,8 +27,8 @@ public class Peca {
     private int quantidade;
     private int quantidadeMin;
     
-    @ManyToMany(mappedBy = "pecaProduto")
-    Set<Produto> produtoPeca;
+    // @ManyToMany(mappedBy = "pecaProduto")
+    // Set<Produto> produtoPeca;
 
     public Peca () {
 
@@ -101,12 +101,12 @@ public class Peca {
         this.quantidadeMin = quantidadeMin;
     }
 
-    public Set<Produto> getProdutoPeca() {
-        return this.produtoPeca;
-    }
+    // public Set<Produto> getProdutoPeca() {
+    //     return this.produtoPeca;
+    // }
 
-    public void setProdutoPeca(Set<Produto> produtoPeca) {
-        this.produtoPeca = produtoPeca;
-    }
+    // public void setProdutoPeca(Set<Produto> produtoPeca) {
+    //     this.produtoPeca = produtoPeca;
+    // }
 }
 

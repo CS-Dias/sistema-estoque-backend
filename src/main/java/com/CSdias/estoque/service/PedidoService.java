@@ -28,14 +28,14 @@ public class PedidoService implements IPedidoService {
         return pedido;
     }
 
-    @Override
-    public List<Pedido> consultaPorData(Date data) {
-        logger.info(">>> Serviço 'Pedido' consultaPorData");
-
-        List<Pedido> pedido = pedidoRepository.findByDate(data);
-
-        return pedido;
-    }
+//    @Override
+//    public List<Pedido> consultaPorData(Date data) {
+//        logger.info(">>> Serviço 'Pedido' consultaPorData");
+//
+//        List<Pedido> pedido = pedidoRepository.findByDate(data);
+//
+//        return pedido;
+//    }
 
     @Override
     public Optional<Pedido> consultaPorId(Long id) {

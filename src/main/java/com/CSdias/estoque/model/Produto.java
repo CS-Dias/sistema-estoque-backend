@@ -28,27 +28,15 @@ public class Produto {
 
     private double valorUnitario;
 
-    @ManyToMany
-    @JoinTable(
-        name = "pecaProduto",
-        joinColumns = @JoinColumn( name = "produto_id"),
-        inverseJoinColumns = @JoinColumn( name = "peca_id")
-    )
-    Set<Peca> pecaProduto;
-
-    @ManyToMany (mappedBy = "pedidoProduto")
-    Set<Pedido> produtoPedido;
-
     public Produto() {
     }
 
-    public Produto(String nome, String descricao, String modelo, String cor, double valorUnitario, Set<Peca> pecaProduto) {
+    public Produto(String nome, String descricao, String modelo, String cor, double valorUnitario) {
         this.nome = nome;
         this.descricao = descricao;
         this.modelo = modelo;
         this.cor = cor;
         this.valorUnitario = valorUnitario;
-        this.pecaProduto = pecaProduto;
     }
 
     public Long getId() {
@@ -99,19 +87,4 @@ public class Produto {
         this.valorUnitario = valorUnitario;
     }
 
-    public Set<Peca> getPecaProduto() {
-        return this.pecaProduto;
-    }
-
-    public void setPecaProduto(Set<Peca> pecaProduto) {
-        this.pecaProduto = pecaProduto;
-    }
-
-    public Set<Pedido> getProdutoPedido() {
-        return this.produtoPedido;
-    }
-
-    public void setProdutoPedido(Set<Pedido> produtoPedido) {
-        this.produtoPedido = produtoPedido;
-    }
 }

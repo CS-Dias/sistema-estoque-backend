@@ -83,16 +83,8 @@ public class APIProdutoController {
     @CrossOrigin
     @PostMapping(value = "produto")
     @Transactional
-    public ResponseEntity<Object> cadastrarProduto(@RequestParam(value = "peca_id") Long peca_id, @RequestBody Produto produto){
+    public ResponseEntity<Object> cadastrarProduto(@RequestBody Produto produto){
         logger.info(">>> ApiController cadastrar Produto");
-    
-        Optional<Peca> peca = pecaService.consultaPorId(peca_id);
-
-        produto.setPecaProduto((Set<Peca>) peca.get());
-
-        Optional<Pedido> pedido = pedidoService.consultaPorId(peca_id);
-
-        produto.setProdutoPedido((Set<Pedido>)pedido.get());
 
         Optional<Produto> newProduto = produtoService.cadastrarProduto(produto);
 

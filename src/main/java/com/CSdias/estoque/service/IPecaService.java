@@ -21,7 +21,7 @@ public interface IPecaService {
 
     public Optional<Peca> atualizarPeca(Peca peca);
 
-    public List<Peca> consultaByProduto(Set<Produto> produto);
+//    public List<Peca> consultaByProduto(Set<Produto> produto);
 
     public void excluirPeca(Long id);
 }

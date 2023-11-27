@@ -14,7 +14,7 @@ public interface IProdutoRepository extends JpaRepository<Produto, Long>{
     
     public List<Produto> findByNomeIgnoringCaseContaining(String nome);
 
-    public List<Produto> findByPedido(Set<Pedido> pedido);
+    // public List<Produto> findByPedido(Set<Pedido> pedido);
 
-    public List<Produto> findByPeca(Set<Peca> peca);
+    // public List<Produto> findByPeca(Set<Peca> peca);
 }

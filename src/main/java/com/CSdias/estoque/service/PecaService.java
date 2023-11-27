@@ -104,13 +104,10 @@ public class PecaService implements IPecaService {
         pecaRepository.deleteById(id);
     }
 
-    @Override
-    public List<Peca> consultaByProduto(Set<Produto> produto) {
-        logger.info(">>> Serviço 'Produto' consultaPorPedido inciado");
-
-        List<Peca> peca = pecaRepository.findByProduto(produto);
-
-        return peca;
-    }
+//    @Override
+//    public List<Peca> consultaByProduto(Set<Produto> produto) {
+//        logger.info(">>> Serviço 'Produto' consultaPorPedido inciado")
+//        return peca;
+//    }
 
 }

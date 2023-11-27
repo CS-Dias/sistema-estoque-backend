@@ -10,9 +10,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.CSdias.estoque.model.IKitRepository;
+import com.CSdias.estoque.model.IPecaProdutoRepository;
 import com.CSdias.estoque.model.IPecaRepository;
+import com.CSdias.estoque.model.IProdutoRepository;
 import com.CSdias.estoque.model.Kit;
 import com.CSdias.estoque.model.Peca;
+import com.CSdias.estoque.model.PecaProduto;
 import com.CSdias.estoque.model.Pedido;
 import com.CSdias.estoque.model.Produto;
 
@@ -21,7 +24,12 @@ public class LoadDatabase {
     Logger logger = LogManager.getLogger(this.getClass());
 
     @Bean
-    CommandLineRunner initDatabase(IPecaRepository pecaRepository, IKitRepository kitRepository) {
+    CommandLineRunner initDatabase(
+        IPecaRepository pecaRepository, 
+        IKitRepository kitRepository,
+        IProdutoRepository produtoRepository,
+        IPecaProdutoRepository pecaProdutoRepository
+    ) {
         return args-> {
             Peca peca1 = new Peca("Rodinha basica", "estrutura", "preta", "Rodinha preta para cadeira basica", 4, 40);
             Peca peca2 = new Peca("Coluna basica", "estrutura", "preta", "Coluna para cadeira basica", 1, 10);
@@ -33,9 +41,16 @@ public class LoadDatabase {
 
             kitRepository.saveAll(Arrays.asList(kit));
 
-            Produto produto1 = new Produto("Cadeira Simples Azul", "Cadeira simples azul para escritório", "Escritório", "azul", 120.50, (Set<Peca>) peca1);
+            Produto produto1 = new Produto("Cadeira Simples Azul", "Cadeira simples azul para escritório", "Escritório", "azul", 120.50);
 
-            Pedido pedido1 = new Pedido("Fulano Beltrano", "sla bixo", "22/11/2023", 5000, (Set<Produto>) produto1);
+            Pedido pedido1 = new Pedido("Fulano Beltrano", "sla bixo", "22/11/2023", 5000);
+
+            produtoRepository.saveAll(Arrays.asList(produto1));
+
+            PecaProduto pecaProduto1 = new PecaProduto(peca1, produto1);
+
+            pecaProdutoRepository.saveAll(Arrays.asList(pecaProduto1));
+
 
             logger.info(">>> LoadDatabase -> Cadastro de 3 Kits realizado");
         };

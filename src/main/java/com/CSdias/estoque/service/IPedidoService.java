@@ -10,7 +10,7 @@ public interface IPedidoService {
 
     public List<Pedido> consultaPedido();
 
-    public List<Pedido> consultaPorData(Date data);
+//    public List<Pedido> consultaPorData(Date data);
 
     public Optional<Pedido> consultaPorId(Long id);
 

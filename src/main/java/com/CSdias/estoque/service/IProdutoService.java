@@ -13,7 +13,7 @@ public interface IProdutoService {
 
     public List<Produto> consultaPorNome(String nome);
 
-    public List<Produto> consultaPorPedido(Set<Pedido> pedido);
+//    public List<Produto> consultaPorPedido(Set<Pedido> pedido);
 
     public Optional<Produto> consultarPorID(Long id);
 

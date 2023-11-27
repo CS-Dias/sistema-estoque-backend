@@ -38,14 +38,14 @@ public class ProdutoService implements IProdutoService{
         return produto;
     }
 
-    @Override
-    public List<Produto> consultaPorPedido(Set<Pedido> pedido) {
-        logger.info(">>> Serviço 'Produto' consultaPorPedido inciado");
-
-        List<Produto> produto = produtoRepository.findByPedido(pedido);
-
-        return produto;
-    }
+//    @Override
+//    public List<Produto> consultaPorPedido(Set<Pedido> pedido) {
+//        logger.info(">>> Serviço 'Produto' consultaPorPedido inciado");
+//
+//        List<Produto> produto = produtoRepository.findByPedido(pedido);
+//
+//        return produto;
+//    }
 
     @Override
     public Optional<Produto> consultarPorID(Long id) {

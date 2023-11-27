@@ -57,24 +57,20 @@ public class APIPedidoController {
         return ResponseEntity.status(HttpStatus.OK).body(pedidoService.consultaPorId(id));
     }
 
-    @CrossOrigin
-    @GetMapping(value = "pedido", params = "data")
-    @Transactional
-    public ResponseEntity<Object> consultaPorData(@RequestParam(value = "data") Date data){
-        logger.info(">>> ApiController consulta Pedido por Data");
-
-        return ResponseEntity.status(HttpStatus.OK).body(pedidoService.consultaPorData(data));
-    }
+//    @CrossOrigin
+//    @GetMapping(value = "pedido", params = "data")
+//    @Transactional
+//    public ResponseEntity<Object> consultaPorData(@RequestParam(value = "data") Date data){
+//        logger.info(">>> ApiController consulta Pedido por Data");
+//
+//        return ResponseEntity.status(HttpStatus.OK).body(pedidoService.consultaPorData(data));
+//    }
 
     @CrossOrigin
     @PostMapping(value = "pedido")
     @Transactional
-    public ResponseEntity<Object> cadastrarPedido(@RequestParam(value = "produto_id") Long produto_id, @RequestBody Pedido pedido){
+    public ResponseEntity<Object> cadastrarPedido(@RequestBody Pedido pedido){
         logger.info(">>> ApiController cadastrar Pedido");
-
-        Optional<Produto> produto = produtoService.consultarPorID(produto_id);
-
-        pedido.setPedidoProduto((Set<Produto>) produto.get());
 
         Optional<Pedido> newPedido = pedidoService.cadastrarPedido(pedido);
 
