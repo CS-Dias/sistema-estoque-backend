@@ -1,15 +1,9 @@
 package com.CSdias.estoque.controller;
 
-import java.util.List;
-import java.util.Optional;
-
-import javax.swing.RepaintManager;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.CSdias.estoque.model.Kit;
 import com.CSdias.estoque.model.Peca;
 import com.CSdias.estoque.model.Resposta;
 import com.CSdias.estoque.service.IKitService;
@@ -65,7 +58,7 @@ public class APIPecaController {
     @CrossOrigin
     @GetMapping(value = "peca", params = "id")
     @Transactional
-    public ResponseEntity<Object> consultaPorId(@RequestParam(value = "id") Long id){
+    public ResponseEntity<Object> consultaPorId(@RequestParam(value = "id") Long id) {
         logger.info(">>> ApiController consulta Peca por ID");
 
         return ResponseEntity.status(HttpStatus.OK).body(pecaService.consultaPorId(id));
@@ -74,7 +67,7 @@ public class APIPecaController {
     @CrossOrigin
     @GetMapping(value = "peca", params = "nome")
     @Transactional
-    public ResponseEntity<Object> consultaPorNome(@RequestParam(value = "nome") String nome){
+    public ResponseEntity<Object> consultaPorNome(@RequestParam(value = "nome") String nome) {
         logger.info(">>> ApiController consulta peca por ID");
 
         return ResponseEntity.status(HttpStatus.OK).body(pecaService.consultaPorNome(nome));
@@ -83,7 +76,7 @@ public class APIPecaController {
     @CrossOrigin
     @PostMapping("peca")
     @Transactional
-    public ResponseEntity<Object> cadastrarPeca(@RequestBody Peca peca){
+    public ResponseEntity<Object> cadastrarPeca(@RequestBody Peca peca) {
         logger.info(">>> ApiController CadastraPeca");
 
         return ResponseEntity.status(HttpStatus.OK).body(pecaService.cadastrarPeca(peca));
@@ -92,17 +85,18 @@ public class APIPecaController {
     // @CrossOrigin
     // @PostMapping(value = "peca")
     // @Transactional
-    // public ResponseEntity<Object> cadastrarPeca(@RequestParam(value = "kit_id") Long kit_id,
-    //         @RequestBody Peca peca) {
-    //     logger.info("apicontroller cadastrar peca");
+    // public ResponseEntity<Object> cadastrarPeca(@RequestParam(value = "kit_id")
+    // Long kit_id,
+    // @RequestBody Peca peca) {
+    // logger.info("apicontroller cadastrar peca");
 
-    //     Optional<Kit> kit = kitService.consultaPorId(kit_id);
+    // Optional<Kit> kit = kitService.consultaPorId(kit_id);
 
-    //     peca.setKit(kit.get());
+    // peca.setKit(kit.get());
 
-    //     Optional<Peca> newPeca = pecaService.cadastrarPeca(peca);
+    // Optional<Peca> newPeca = pecaService.cadastrarPeca(peca);
 
-    //     return ResponseEntity.status(HttpStatus.OK).body(newPeca);
+    // return ResponseEntity.status(HttpStatus.OK).body(newPeca);
     // }
 
     @CrossOrigin

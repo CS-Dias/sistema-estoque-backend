@@ -21,14 +21,14 @@ public class PecaProdutoService implements IPecaProdutoService {
 
    public Logger getLogger() {
       return this.logger;
-    }
+   }
 
    public void setLogger(Logger logger) {
       this.logger = logger;
    }
-   
+
    @Override
-   public List <PecaProduto> consultaPecaProduto(){
+   public List<PecaProduto> consultaPecaProduto() {
       logger.info("Servico PecaProduto - consulta dados iniciado");
 
       return pecaProdutoRepository.findAll();
@@ -46,4 +46,35 @@ public class PecaProdutoService implements IPecaProdutoService {
       logger.info("Servico PecaProduto - consulta dados iniciado");
       return pecaProdutoRepository.findByProduto(produto);
    }
+
+   @Override
+   public Optional<PecaProduto> cadastrarPecaProduto(PecaProduto pecaProduto) {
+      logger.info(">>> Serviço 'Kit' cadastrarKit iniciado");
+
+      return Optional.ofNullable(pecaProdutoRepository.save(pecaProduto));
+   }
+
+   @Override
+   public Optional<PecaProduto> atualizarPecaProduto(PecaProduto pecaProduto) {
+
+      logger.info("Serviço PecaProduto - atualizar dados iniciado");
+
+      return pecaProdutoRepository.findById(pecaProduto.getId()).map(item -> {
+         item.setId(pecaProduto.getId());
+         item.setPeca(pecaProduto.getPeca());
+         item.setProduto(pecaProduto.getProduto());
+         return pecaProdutoRepository.save(item);
+      });
+
+   }
+
+   @Override
+   public void deletarPecaProduto(Long id) {
+
+      logger.info("Serviço PecaProduto - delete dados iniciado");
+
+      pecaProdutoRepository.deleteById(id);
+
+   }
+
 }

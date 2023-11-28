@@ -8,8 +8,15 @@ import java.util.Optional;
 
 public interface IPecaProdutoService {
 
-   public List <PecaProduto> consultaPecaProduto();
+   public List<PecaProduto> consultaPecaProduto();
+
    public Optional<PecaProduto> consultaPorId(Long id);
+
    public List<PecaProduto> consultaPorProduto(Produto produto);
-//   public Optional <PecaProduto> atualizarPecaProduto(PecaProduto pecaProduto);
-} 
+
+   public Optional<PecaProduto> cadastrarPecaProduto(PecaProduto pecaProduto);
+
+   public Optional<PecaProduto> atualizarPecaProduto(PecaProduto pecaProduto);
+
+   public void deletarPecaProduto(Long id);
+}
