@@ -6,12 +6,14 @@ import java.util.Optional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.CSdias.estoque.model.IProdutoPedidoRepository;
 import com.CSdias.estoque.model.Pedido;
 import com.CSdias.estoque.model.ProdutoPedido;
 
-public class PedidoProdutoService implements IProdutoPedidoService{
+@Service
+public class produtoPedidoService implements IProdutoPedidoService{
     Logger logger = LogManager.getLogger(getClass());
 
     @Autowired
