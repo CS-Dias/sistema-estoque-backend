@@ -25,15 +25,14 @@ public class LoadDatabase {
 
     @Bean
     CommandLineRunner initDatabase(
-        IPecaRepository pecaRepository, 
-        IKitRepository kitRepository,
-        IProdutoRepository produtoRepository,
-        IPecaProdutoRepository pecaProdutoRepository
-    ) {
-        return args-> {
-            Peca peca1 = new Peca("Rodinha basica", "estrutura", "preta", "Rodinha preta para cadeira basica", 4, 40);
-            Peca peca2 = new Peca("Coluna basica", "estrutura", "preta", "Coluna para cadeira basica", 1, 10);
-            Peca peca3 = new Peca("Estrela basica", "estrutura", "preta", "Estrela para cadeira basica", 1, 10);
+            IPecaRepository pecaRepository,
+            IKitRepository kitRepository,
+            IProdutoRepository produtoRepository,
+            IPecaProdutoRepository pecaProdutoRepository) {
+        return args -> {
+            Peca peca1 = new Peca("Rodinha basica", "RODIZIO", "preta", "Rodinha preta para cadeira basica", 4, 40);
+            Peca peca2 = new Peca("Coluna basica", "MECANISMO", "preta", "Coluna para cadeira basica", 1, 10);
+            Peca peca3 = new Peca("Estrela basica", "BASE", "preta", "Estrela para cadeira basica", 1, 10);
 
             pecaRepository.saveAll(Arrays.asList(peca1, peca2, peca3));
 
@@ -41,7 +40,8 @@ public class LoadDatabase {
 
             kitRepository.saveAll(Arrays.asList(kit));
 
-            Produto produto1 = new Produto("Cadeira Simples Azul", "Cadeira simples azul para escritório", "Escritório", "azul", 120.50);
+            Produto produto1 = new Produto("Cadeira Simples Azul", "Cadeira simples azul para escritório", "Escritório",
+                    "azul", 120.50);
 
             Pedido pedido1 = new Pedido("Fulano Beltrano", "sla bixo", "22/11/2023", 5000);
 
@@ -50,7 +50,6 @@ public class LoadDatabase {
             PecaProduto pecaProduto1 = new PecaProduto(peca1, produto1);
 
             pecaProdutoRepository.saveAll(Arrays.asList(pecaProduto1));
-
 
             logger.info(">>> LoadDatabase -> Cadastro de 3 Kits realizado");
         };

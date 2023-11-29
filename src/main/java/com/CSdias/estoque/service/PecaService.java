@@ -41,6 +41,7 @@ public class PecaService implements IPecaService {
     public void setKitRepository(IKitRepository kitRepository) {
         this.kitRepository = kitRepository;
     }
+
     Logger logger = LogManager.getLogger(getClass());
 
     @Autowired
@@ -68,6 +69,15 @@ public class PecaService implements IPecaService {
     }
 
     @Override
+    public List<Peca> consultaPorTipo(String tipo) {
+        logger.info(">>> Serviço 'Peca' consultaPorNome");
+
+        List<Peca> peca = pecaRepository.findByTipoIgnoringCaseContaining(tipo);
+
+        return peca;
+    }
+
+    @Override
     public Optional<Peca> consultaPorId(Long id) {
         logger.info(">>> Serviço 'Peca' consultaPorId iniciado");
 
@@ -76,9 +86,9 @@ public class PecaService implements IPecaService {
 
     @Override
     public Optional<Peca> cadastrarPeca(Peca peca) {
-       logger.info(">>> Serviço 'Peca' cadastrarPeca iniciado");
+        logger.info(">>> Serviço 'Peca' cadastrarPeca iniciado");
 
-       return Optional.ofNullable(pecaRepository.save(peca));
+        return Optional.ofNullable(pecaRepository.save(peca));
     }
 
     @Override
@@ -104,10 +114,10 @@ public class PecaService implements IPecaService {
         pecaRepository.deleteById(id);
     }
 
-//    @Override
-//    public List<Peca> consultaByProduto(Set<Produto> produto) {
-//        logger.info(">>> Serviço 'Produto' consultaPorPedido inciado")
-//        return peca;
-//    }
+    // @Override
+    // public List<Peca> consultaByProduto(Set<Produto> produto) {
+    // logger.info(">>> Serviço 'Produto' consultaPorPedido inciado")
+    // return peca;
+    // }
 
 }

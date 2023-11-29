@@ -74,6 +74,15 @@ public class APIPecaController {
     }
 
     @CrossOrigin
+    @GetMapping(value = "peca", params = "tipo")
+    @Transactional
+    public ResponseEntity<Object> consultaPorTipo(@RequestParam(value = "tipo") String tipo) {
+        logger.info(">>> ApiController consulta peca por Tipo");
+
+        return ResponseEntity.status(HttpStatus.OK).body(pecaService.consultaPorTipo(tipo));
+    }
+
+    @CrossOrigin
     @PostMapping("peca")
     @Transactional
     public ResponseEntity<Object> cadastrarPeca(@RequestBody Peca peca) {

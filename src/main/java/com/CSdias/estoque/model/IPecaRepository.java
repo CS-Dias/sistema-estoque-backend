@@ -11,5 +11,6 @@ public interface IPecaRepository extends JpaRepository<Peca, Long> {
 
     public List<Peca> findByNomeIgnoringCaseContaining(String nome);
 
+    public List<Peca> findByTipoIgnoringCaseContaining(String tipo);
     // public List<Peca> findByProduto(Set<Produto> produto);
 }
